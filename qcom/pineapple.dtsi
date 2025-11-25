@@ -63,7 +63,7 @@
 			power-domain-names = "psci";
 			qcom,freq-domain = <&cpufreq_hw 0>;
 			#cooling-cells = <2>;
-			capacity-dmips-mhz = <1024>;
+			capacity-dmips-mhz = <488>;
 			dynamic-power-coefficient = <100>;
 			next-level-cache = <&L2_0>;
 			L2_0: l2-cache {
@@ -88,7 +88,7 @@
 			power-domain-names = "psci";
 			qcom,freq-domain = <&cpufreq_hw 0>;
 			#cooling-cells = <2>;
-			capacity-dmips-mhz = <1024>;
+			capacity-dmips-mhz = <488>;
 			dynamic-power-coefficient = <100>;
 			next-level-cache = <&L2_0>;
 		};
@@ -104,7 +104,7 @@
 			next-level-cache = <&L2_2>;
 			#cooling-cells = <2>;
 			qcom,freq-domain = <&cpufreq_hw 3>;
-			capacity-dmips-mhz = <1792>;
+			capacity-dmips-mhz = <980>;
 			dynamic-power-coefficient = <238>;
 			L2_2: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -123,7 +123,7 @@
 			power-domain-names = "psci";
 			qcom,freq-domain = <&cpufreq_hw 3>;
 			#cooling-cells = <2>;
-			capacity-dmips-mhz = <1792>;
+			capacity-dmips-mhz = <980>;
 			dynamic-power-coefficient = <238>;
 			next-level-cache = <&L2_3>;
 			L2_3: l2-cache {
@@ -143,7 +143,7 @@
 			power-domain-names = "psci";
 			qcom,freq-domain = <&cpufreq_hw 3>;
 			#cooling-cells = <2>;
-			capacity-dmips-mhz = <1792>;
+			capacity-dmips-mhz = <983>;
 			dynamic-power-coefficient = <238>;
 			next-level-cache = <&L2_4>;
 			L2_4: l2-cache {
@@ -164,7 +164,7 @@
 			power-domain-names = "psci";
 			qcom,freq-domain = <&cpufreq_hw 1>;
 			#cooling-cells = <2>;
-			capacity-dmips-mhz = <1792>;
+			capacity-dmips-mhz = <983>;
 			dynamic-power-coefficient = <238>;
 			next-level-cache = <&L2_5>;
 			L2_5: l2-cache {
@@ -184,7 +184,7 @@
 			power-domain-names = "psci";
 			qcom,freq-domain = <&cpufreq_hw 1>;
 			#cooling-cells = <2>;
-			capacity-dmips-mhz = <1792>;
+			capacity-dmips-mhz = <983>;
 			dynamic-power-coefficient = <238>;
 			next-level-cache = <&L2_6>;
 			L2_6: l2-cache {
@@ -204,7 +204,7 @@
 			power-domain-names = "psci";
 			qcom,freq-domain = <&cpufreq_hw 2>;
 			#cooling-cells = <2>;
-			capacity-dmips-mhz = <1894>;
+			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <588>;
 			next-level-cache = <&L2_7>;
 			L2_7: l2-cache {
