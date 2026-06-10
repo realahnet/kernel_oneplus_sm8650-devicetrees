@@ -183,8 +183,8 @@
 
 &thermal_zones {
 	skin-msm-therm {
-		polling-delay-passive = <0>;
-		polling-delay = <0>;
+		polling-delay-passive = <250>;
+		polling-delay = <1000>;
 		thermal-sensors = <&pmk8550_vadc PM8550_ADC5_GEN3_AMUX_THM1_100K_PU>;
 		trips {
 			active-config0 {
@@ -199,17 +199,285 @@
 				type = "passive";
 			};
 
-			skin_msm_config0: skin-msm-config0 {
+			skin_msm_l1: skin-msm-l1 {
+				temperature = <43000>;
+				hysteresis = <1500>;
+				type = "passive";
+			};
+
+			skin_msm_l2: skin-msm-l2 {
+				temperature = <44500>;
+				hysteresis = <1500>;
+				type = "passive";
+			};
+
+			skin_msm_l3: skin-msm-l3 {
+				temperature = <47000>;
+				hysteresis = <3000>;
+				type = "passive";
+			};
+
+			skin_msm_l4: skin-msm-l4 {
+				temperature = <49000>;
+				hysteresis = <2500>;
+				type = "passive";
+			};
+
+			skin_msm_l5: skin-msm-l5 {
+				temperature = <51000>;
+				hysteresis = <3000>;
+				type = "passive";
+			};
+
+			skin_msm_l6: skin-msm-l6 {
+				temperature = <54000>;
+				hysteresis = <3000>;
+				type = "passive";
+			};
+
+			skin_msm_l7: skin-msm-l7 {
+				temperature = <57000>;
+				hysteresis = <3500>;
+				type = "passive";
+			};
+
+			skin_msm_l8: skin-msm-l8 {
 				temperature = <60000>;
-				hysteresis = <10000>;
+				hysteresis = <4000>;
+				type = "passive";
+			};
+
+			skin_msm_l9: skin-msm-l9 {
+				temperature = <62000>;
+				hysteresis = <4000>;
 				type = "passive";
 			};
 		};
 
 		cooling-maps {
-			gpu_dump_skip {
-				trip = <&skin_msm_config0>;
-				cooling-device = <&gpu_dump_skip_cdev 1 1>;
+			skin_gpu_l1 {
+				trip = <&skin_msm_l1>;
+				cooling-device = <&msm_gpu 1 1>;
+			};
+
+			skin_ddr_l1 {
+				trip = <&skin_msm_l1>;
+				cooling-device = <&ddr_cdev 1 1>;
+			};
+
+			skin_prime_l1 {
+				trip = <&skin_msm_l2>;
+				cooling-device = <&cpu_cluster3_cdev 3 3>;
+			};
+
+			skin_gpu_l2 {
+				trip = <&skin_msm_l2>;
+				cooling-device = <&msm_gpu 1 1>;
+			};
+
+			skin_ddr_l2 {
+				trip = <&skin_msm_l2>;
+				cooling-device = <&ddr_cdev 1 1>;
+			};
+
+			skin_big_l2 {
+				trip = <&skin_msm_l2>;
+				cooling-device = <&cpu_cluster2_cdev 4 4>;
+			};
+
+			skin_prime_l2 {
+				trip = <&skin_msm_l2>;
+				cooling-device = <&cpu_cluster3_cdev 8 8>;
+			};
+
+			skin_gpu_l3 {
+				trip = <&skin_msm_l3>;
+				cooling-device = <&msm_gpu 3 3>;
+			};
+
+			skin_ddr_l3 {
+				trip = <&skin_msm_l3>;
+				cooling-device = <&ddr_cdev 2 2>;
+			};
+
+			skin_big_l3 {
+				trip = <&skin_msm_l3>;
+				cooling-device = <&cpu_cluster2_cdev 8 8>;
+			};
+
+			skin_prime_l3 {
+				trip = <&skin_msm_l3>;
+				cooling-device = <&cpu_cluster3_cdev 12 12>;
+			};
+
+			skin_gpu_l4 {
+				trip = <&skin_msm_l4>;
+				cooling-device = <&msm_gpu 7 7>;
+			};
+
+			skin_ddr_l4 {
+				trip = <&skin_msm_l4>;
+				cooling-device = <&ddr_cdev 6 6>;
+			};
+
+			skin_gold_l4 {
+				trip = <&skin_msm_l4>;
+				cooling-device = <&cpu_cluster1_cdev 6 6>;
+			};
+
+			skin_big_l4 {
+				trip = <&skin_msm_l4>;
+				cooling-device = <&cpu_cluster2_cdev 10 10>;
+			};
+
+			skin_prime_l4 {
+				trip = <&skin_msm_l4>;
+				cooling-device = <&cpu_cluster3_cdev 18 18>;
+			};
+
+			skin_gpu_l5 {
+				trip = <&skin_msm_l5>;
+				cooling-device = <&msm_gpu 10 10>;
+			};
+
+			skin_ddr_l5 {
+				trip = <&skin_msm_l5>;
+				cooling-device = <&ddr_cdev 8 8>;
+			};
+
+			skin_gold_l5 {
+				trip = <&skin_msm_l5>;
+				cooling-device = <&cpu_cluster1_cdev 8 8>;
+			};
+
+			skin_big_l5 {
+				trip = <&skin_msm_l5>;
+				cooling-device = <&cpu_cluster2_cdev 18 18>;
+			};
+
+			skin_prime_l5 {
+				trip = <&skin_msm_l5>;
+				cooling-device = <&cpu_cluster3_cdev 24 24>;
+			};
+
+			skin_gpu_l6 {
+				trip = <&skin_msm_l6>;
+				cooling-device = <&msm_gpu 8 8>;
+			};
+
+			skin_ddr_l6 {
+				trip = <&skin_msm_l6>;
+				cooling-device = <&ddr_cdev 7 7>;
+			};
+
+			skin_silver_l6 {
+				trip = <&skin_msm_l6>;
+				cooling-device = <&cpu_cluster0_cdev 1 1>;
+			};
+
+			skin_gold_l6 {
+				trip = <&skin_msm_l6>;
+				cooling-device = <&cpu_cluster1_cdev 8 8>;
+			};
+
+			skin_big_l6 {
+				trip = <&skin_msm_l6>;
+				cooling-device = <&cpu_cluster2_cdev 24 24>;
+			};
+
+			skin_prime_l6 {
+				trip = <&skin_msm_l6>;
+				cooling-device = <&cpu_cluster3_cdev 28 28>;
+			};
+
+			skin_gpu_l7 {
+				trip = <&skin_msm_l7>;
+				cooling-device = <&msm_gpu 9 9>;
+			};
+
+			skin_ddr_l7 {
+				trip = <&skin_msm_l7>;
+				cooling-device = <&ddr_cdev 8 8>;
+			};
+
+			skin_silver_l7 {
+				trip = <&skin_msm_l7>;
+				cooling-device = <&cpu_cluster0_cdev 2 2>;
+			};
+
+			skin_gold_l7 {
+				trip = <&skin_msm_l7>;
+				cooling-device = <&cpu_cluster1_cdev 12 12>;
+			};
+
+			skin_big_l7 {
+				trip = <&skin_msm_l7>;
+				cooling-device = <&cpu_cluster2_cdev 26 26>;
+			};
+
+			skin_prime_l7 {
+				trip = <&skin_msm_l7>;
+				cooling-device = <&cpu_cluster3_cdev 30 30>;
+			};
+
+			skin_gpu_l8 {
+				trip = <&skin_msm_l8>;
+				cooling-device = <&msm_gpu 10 10>;
+			};
+
+			skin_ddr_l8 {
+				trip = <&skin_msm_l8>;
+				cooling-device = <&ddr_cdev 8 8>;
+			};
+
+			skin_silver_l8 {
+				trip = <&skin_msm_l8>;
+				cooling-device = <&cpu_cluster0_cdev 3 3>;
+			};
+
+			skin_gold_l8 {
+				trip = <&skin_msm_l8>;
+				cooling-device = <&cpu_cluster1_cdev 18 18>;
+			};
+
+			skin_big_l8 {
+				trip = <&skin_msm_l8>;
+				cooling-device = <&cpu_cluster2_cdev 28 28>;
+			};
+
+			skin_prime_l8 {
+				trip = <&skin_msm_l8>;
+				cooling-device = <&cpu_cluster3_cdev 32 32>;
+			};
+
+			skin_gpu_l9 {
+				trip = <&skin_msm_l9>;
+				cooling-device = <&msm_gpu 10 10>;
+			};
+
+			skin_ddr_l9 {
+				trip = <&skin_msm_l9>;
+				cooling-device = <&ddr_cdev 8 8>;
+			};
+
+			skin_silver_l9 {
+				trip = <&skin_msm_l9>;
+				cooling-device = <&cpu_cluster0_cdev 4 4>;
+			};
+
+			skin_gold_l9 {
+				trip = <&skin_msm_l9>;
+				cooling-device = <&cpu_cluster1_cdev 30 30>;
+			};
+
+			skin_big_l9 {
+				trip = <&skin_msm_l9>;
+				cooling-device = <&cpu_cluster2_cdev 28 28>;
+			};
+
+			skin_prime_l9 {
+				trip = <&skin_msm_l9>;
+				cooling-device = <&cpu_cluster3_cdev 34 34>;
 			};
 		};
 	};

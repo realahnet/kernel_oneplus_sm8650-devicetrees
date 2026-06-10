@@ -267,20 +267,24 @@
 
 	qcom,cpufreq-cdev {
 		compatible = "qcom,cpufreq-cdev";
-		cpu-cluster0 {
+		cpu_cluster0_cdev: cpu-cluster0 {
 			qcom,cpus = <&CPU0 &CPU1>;
+			#cooling-cells = <2>;
 		};
 
-		cpu-cluster1 {
+		cpu_cluster1_cdev: cpu-cluster1 {
 			qcom,cpus = <&CPU2 &CPU3 &CPU4>;
+			#cooling-cells = <2>;
 		};
 
-		cpu-cluster2 {
+		cpu_cluster2_cdev: cpu-cluster2 {
 			qcom,cpus = <&CPU5 &CPU6>;
+			#cooling-cells = <2>;
 		};
 
-		cpu-cluster3 {
+		cpu_cluster3_cdev: cpu-cluster3 {
 			qcom,cpus = <&CPU7>;
+			#cooling-cells = <2>;
 		};
 	};
 
@@ -1354,7 +1358,13 @@
 			};
 
 			ddr_config0: ddr0-config {
-				temperature = <90000>;
+				temperature = <98000>;
+				hysteresis = <5000>;
+				type = "passive";
+			};
+
+			ddr_config1: ddr1-config {
+				temperature = <103000>;
 				hysteresis = <5000>;
 				type = "passive";
 			};
@@ -1391,9 +1401,24 @@
 					THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
 			};
 
-			ddr_cdev {
+			ddr_cdev0 {
 				trip = <&ddr_config0>;
-				cooling-device = <&ddr_cdev 5 5>;
+				cooling-device = <&ddr_cdev 0 0>;
+			};
+
+			ddr_gpu_cdev1 {
+				trip = <&ddr_config1>;
+				cooling-device = <&msm_gpu 1 1>;
+			};
+
+			ddr_cdev1 {
+				trip = <&ddr_config1>;
+				cooling-device = <&ddr_cdev 3 3>;
+			};
+
+			ddr_prime_cdev1 {
+				trip = <&ddr_config1>;
+				cooling-device = <&cpu_cluster3_cdev 2 2>;
 			};
 		};
 	};
@@ -1472,9 +1497,15 @@
 				type = "passive";
 			};
 
-			gpu0_tj_cfg: tj_cfg {
-				temperature = <95000>;
-				hysteresis = <5000>;
+			gpu0_tj_cfg0: tj_cfg0 {
+				temperature = <98000>;
+				hysteresis = <3000>;
+				type = "passive";
+			};
+
+			gpu0_tj_cfg1: tj_cfg1 {
+				temperature = <103000>;
+				hysteresis = <4000>;
 				type = "passive";
 			};
 
@@ -1486,9 +1517,24 @@
 		};
 
 		cooling-maps {
-			gpu0_cdev {
-				trip = <&gpu0_tj_cfg>;
-				cooling-device = <&msm_gpu 0 THERMAL_NO_LIMIT>;
+			gpu0_cdev0 {
+				trip = <&gpu0_tj_cfg0>;
+				cooling-device = <&msm_gpu 0 0>;
+			};
+
+			gpu0_cdev1 {
+				trip = <&gpu0_tj_cfg1>;
+				cooling-device = <&msm_gpu 2 2>;
+			};
+
+			gpu0_ddr_cdev1 {
+				trip = <&gpu0_tj_cfg1>;
+				cooling-device = <&ddr_cdev 1 1>;
+			};
+
+			gpu0_prime_cdev1 {
+				trip = <&gpu0_tj_cfg1>;
+				cooling-device = <&cpu_cluster3_cdev 1 1>;
 			};
 		};
 	};
@@ -1510,9 +1556,15 @@
 				type = "passive";
 			};
 
-			gpu1_tj_cfg: tj_cfg {
-				temperature = <95000>;
-				hysteresis = <5000>;
+			gpu1_tj_cfg0: tj_cfg0 {
+				temperature = <98000>;
+				hysteresis = <3000>;
+				type = "passive";
+			};
+
+			gpu1_tj_cfg1: tj_cfg1 {
+				temperature = <103000>;
+				hysteresis = <4000>;
 				type = "passive";
 			};
 
@@ -1524,9 +1576,24 @@
 		};
 
 		cooling-maps {
-			gpu1_cdev {
-				trip = <&gpu1_tj_cfg>;
-				cooling-device = <&msm_gpu 0 THERMAL_NO_LIMIT>;
+			gpu1_cdev0 {
+				trip = <&gpu1_tj_cfg0>;
+				cooling-device = <&msm_gpu 0 0>;
+			};
+
+			gpu1_cdev1 {
+				trip = <&gpu1_tj_cfg1>;
+				cooling-device = <&msm_gpu 2 2>;
+			};
+
+			gpu1_ddr_cdev1 {
+				trip = <&gpu1_tj_cfg1>;
+				cooling-device = <&ddr_cdev 1 1>;
+			};
+
+			gpu1_prime_cdev1 {
+				trip = <&gpu1_tj_cfg1>;
+				cooling-device = <&cpu_cluster3_cdev 1 1>;
 			};
 		};
 	};
@@ -1548,9 +1615,15 @@
 				type = "passive";
 			};
 
-			gpu2_tj_cfg: tj_cfg {
-				temperature = <95000>;
-				hysteresis = <5000>;
+			gpu2_tj_cfg0: tj_cfg0 {
+				temperature = <98000>;
+				hysteresis = <3000>;
+				type = "passive";
+			};
+
+			gpu2_tj_cfg1: tj_cfg1 {
+				temperature = <103000>;
+				hysteresis = <4000>;
 				type = "passive";
 			};
 
@@ -1562,9 +1635,24 @@
 		};
 
 		cooling-maps {
-			gpu2_cdev {
-				trip = <&gpu2_tj_cfg>;
-				cooling-device = <&msm_gpu 0 THERMAL_NO_LIMIT>;
+			gpu2_cdev0 {
+				trip = <&gpu2_tj_cfg0>;
+				cooling-device = <&msm_gpu 0 0>;
+			};
+
+			gpu2_cdev1 {
+				trip = <&gpu2_tj_cfg1>;
+				cooling-device = <&msm_gpu 2 2>;
+			};
+
+			gpu2_ddr_cdev1 {
+				trip = <&gpu2_tj_cfg1>;
+				cooling-device = <&ddr_cdev 1 1>;
+			};
+
+			gpu2_prime_cdev1 {
+				trip = <&gpu2_tj_cfg1>;
+				cooling-device = <&cpu_cluster3_cdev 1 1>;
 			};
 		};
 	};
@@ -1586,9 +1674,15 @@
 				type = "passive";
 			};
 
-			gpu3_tj_cfg: tj_cfg {
-				temperature = <95000>;
-				hysteresis = <5000>;
+			gpu3_tj_cfg0: tj_cfg0 {
+				temperature = <98000>;
+				hysteresis = <3000>;
+				type = "passive";
+			};
+
+			gpu3_tj_cfg1: tj_cfg1 {
+				temperature = <103000>;
+				hysteresis = <4000>;
 				type = "passive";
 			};
 
@@ -1600,9 +1694,24 @@
 		};
 
 		cooling-maps {
-			gpu3_cdev {
-				trip = <&gpu3_tj_cfg>;
-				cooling-device = <&msm_gpu 0 THERMAL_NO_LIMIT>;
+			gpu3_cdev0 {
+				trip = <&gpu3_tj_cfg0>;
+				cooling-device = <&msm_gpu 0 0>;
+			};
+
+			gpu3_cdev1 {
+				trip = <&gpu3_tj_cfg1>;
+				cooling-device = <&msm_gpu 2 2>;
+			};
+
+			gpu3_ddr_cdev1 {
+				trip = <&gpu3_tj_cfg1>;
+				cooling-device = <&ddr_cdev 1 1>;
+			};
+
+			gpu3_prime_cdev1 {
+				trip = <&gpu3_tj_cfg1>;
+				cooling-device = <&cpu_cluster3_cdev 1 1>;
 			};
 		};
 	};
@@ -1624,9 +1733,15 @@
 				type = "passive";
 			};
 
-			gpu4_tj_cfg: tj_cfg {
-				temperature = <95000>;
-				hysteresis = <5000>;
+			gpu4_tj_cfg0: tj_cfg0 {
+				temperature = <98000>;
+				hysteresis = <3000>;
+				type = "passive";
+			};
+
+			gpu4_tj_cfg1: tj_cfg1 {
+				temperature = <103000>;
+				hysteresis = <4000>;
 				type = "passive";
 			};
 
@@ -1638,9 +1753,24 @@
 		};
 
 		cooling-maps {
-			gpu4_cdev {
-				trip = <&gpu4_tj_cfg>;
-				cooling-device = <&msm_gpu 0 THERMAL_NO_LIMIT>;
+			gpu4_cdev0 {
+				trip = <&gpu4_tj_cfg0>;
+				cooling-device = <&msm_gpu 0 0>;
+			};
+
+			gpu4_cdev1 {
+				trip = <&gpu4_tj_cfg1>;
+				cooling-device = <&msm_gpu 2 2>;
+			};
+
+			gpu4_ddr_cdev1 {
+				trip = <&gpu4_tj_cfg1>;
+				cooling-device = <&ddr_cdev 1 1>;
+			};
+
+			gpu4_prime_cdev1 {
+				trip = <&gpu4_tj_cfg1>;
+				cooling-device = <&cpu_cluster3_cdev 1 1>;
 			};
 		};
 	};
@@ -1662,9 +1792,15 @@
 				type = "passive";
 			};
 
-			gpu5_tj_cfg: tj_cfg {
-				temperature = <95000>;
-				hysteresis = <5000>;
+			gpu5_tj_cfg0: tj_cfg0 {
+				temperature = <98000>;
+				hysteresis = <3000>;
+				type = "passive";
+			};
+
+			gpu5_tj_cfg1: tj_cfg1 {
+				temperature = <103000>;
+				hysteresis = <4000>;
 				type = "passive";
 			};
 
@@ -1676,9 +1812,24 @@
 		};
 
 		cooling-maps {
-			gpu5_cdev {
-				trip = <&gpu5_tj_cfg>;
-				cooling-device = <&msm_gpu 0 THERMAL_NO_LIMIT>;
+			gpu5_cdev0 {
+				trip = <&gpu5_tj_cfg0>;
+				cooling-device = <&msm_gpu 0 0>;
+			};
+
+			gpu5_cdev1 {
+				trip = <&gpu5_tj_cfg1>;
+				cooling-device = <&msm_gpu 2 2>;
+			};
+
+			gpu5_ddr_cdev1 {
+				trip = <&gpu5_tj_cfg1>;
+				cooling-device = <&ddr_cdev 1 1>;
+			};
+
+			gpu5_prime_cdev1 {
+				trip = <&gpu5_tj_cfg1>;
+				cooling-device = <&cpu_cluster3_cdev 1 1>;
 			};
 		};
 	};
@@ -1700,9 +1851,15 @@
 				type = "passive";
 			};
 
-			gpu6_tj_cfg: tj_cfg {
-				temperature = <95000>;
-				hysteresis = <5000>;
+			gpu6_tj_cfg0: tj_cfg0 {
+				temperature = <98000>;
+				hysteresis = <3000>;
+				type = "passive";
+			};
+
+			gpu6_tj_cfg1: tj_cfg1 {
+				temperature = <103000>;
+				hysteresis = <4000>;
 				type = "passive";
 			};
 
@@ -1714,9 +1871,24 @@
 		};
 
 		cooling-maps {
-			gpu6_cdev {
-				trip = <&gpu6_tj_cfg>;
-				cooling-device = <&msm_gpu 0 THERMAL_NO_LIMIT>;
+			gpu6_cdev0 {
+				trip = <&gpu6_tj_cfg0>;
+				cooling-device = <&msm_gpu 0 0>;
+			};
+
+			gpu6_cdev1 {
+				trip = <&gpu6_tj_cfg1>;
+				cooling-device = <&msm_gpu 2 2>;
+			};
+
+			gpu6_ddr_cdev1 {
+				trip = <&gpu6_tj_cfg1>;
+				cooling-device = <&ddr_cdev 1 1>;
+			};
+
+			gpu6_prime_cdev1 {
+				trip = <&gpu6_tj_cfg1>;
+				cooling-device = <&cpu_cluster3_cdev 1 1>;
 			};
 		};
 	};
@@ -1738,9 +1910,15 @@
 				type = "passive";
 			};
 
-			gpu7_tj_cfg: tj_cfg {
-				temperature = <95000>;
-				hysteresis = <5000>;
+			gpu7_tj_cfg0: tj_cfg0 {
+				temperature = <98000>;
+				hysteresis = <3000>;
+				type = "passive";
+			};
+
+			gpu7_tj_cfg1: tj_cfg1 {
+				temperature = <103000>;
+				hysteresis = <4000>;
 				type = "passive";
 			};
 
@@ -1752,9 +1930,24 @@
 		};
 
 		cooling-maps {
-			gpu7_cdev {
-				trip = <&gpu7_tj_cfg>;
-				cooling-device = <&msm_gpu 0 THERMAL_NO_LIMIT>;
+			gpu7_cdev0 {
+				trip = <&gpu7_tj_cfg0>;
+				cooling-device = <&msm_gpu 0 0>;
+			};
+
+			gpu7_cdev1 {
+				trip = <&gpu7_tj_cfg1>;
+				cooling-device = <&msm_gpu 2 2>;
+			};
+
+			gpu7_ddr_cdev1 {
+				trip = <&gpu7_tj_cfg1>;
+				cooling-device = <&ddr_cdev 1 1>;
+			};
+
+			gpu7_prime_cdev1 {
+				trip = <&gpu7_tj_cfg1>;
+				cooling-device = <&cpu_cluster3_cdev 1 1>;
 			};
 		};
 	};
