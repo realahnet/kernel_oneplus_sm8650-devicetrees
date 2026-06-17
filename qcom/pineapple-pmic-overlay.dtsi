@@ -266,8 +266,8 @@
 			};
 
 			skin_prime_l1 {
-				trip = <&skin_msm_l2>;
-				cooling-device = <&cpu_cluster3_cdev 3 3>;
+				trip = <&skin_msm_l1>;
+				cooling-device = <&cpu_cluster3_cdev 4 4>;
 			};
 
 			skin_gpu_l2 {
@@ -300,6 +300,11 @@
 				cooling-device = <&ddr_cdev 2 2>;
 			};
 
+			skin_gold_l3 {
+				trip = <&skin_msm_l3>;
+				cooling-device = <&cpu_cluster1_cdev 8 8>;
+			};
+
 			skin_big_l3 {
 				trip = <&skin_msm_l3>;
 				cooling-device = <&cpu_cluster2_cdev 8 8>;
@@ -322,7 +327,7 @@
 
 			skin_gold_l4 {
 				trip = <&skin_msm_l4>;
-				cooling-device = <&cpu_cluster1_cdev 6 6>;
+				cooling-device = <&cpu_cluster1_cdev 10 10>;
 			};
 
 			skin_big_l4 {
@@ -347,7 +352,7 @@
 
 			skin_gold_l5 {
 				trip = <&skin_msm_l5>;
-				cooling-device = <&cpu_cluster1_cdev 8 8>;
+				cooling-device = <&cpu_cluster1_cdev 12 12>;
 			};
 
 			skin_big_l5 {
@@ -377,7 +382,7 @@
 
 			skin_gold_l6 {
 				trip = <&skin_msm_l6>;
-				cooling-device = <&cpu_cluster1_cdev 8 8>;
+				cooling-device = <&cpu_cluster1_cdev 16 16>;
 			};
 
 			skin_big_l6 {
@@ -407,7 +412,7 @@
 
 			skin_gold_l7 {
 				trip = <&skin_msm_l7>;
-				cooling-device = <&cpu_cluster1_cdev 12 12>;
+				cooling-device = <&cpu_cluster1_cdev 18 18>;
 			};
 
 			skin_big_l7 {
@@ -437,7 +442,7 @@
 
 			skin_gold_l8 {
 				trip = <&skin_msm_l8>;
-				cooling-device = <&cpu_cluster1_cdev 18 18>;
+				cooling-device = <&cpu_cluster1_cdev 24 24>;
 			};
 
 			skin_big_l8 {
