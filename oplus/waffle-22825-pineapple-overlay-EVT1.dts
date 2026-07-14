@@ -64,6 +64,12 @@
     compatible = "oplus, sim_detect";
     Hw,sim_det = "modem_det";
   };
+  uim2-switch {
+    compatible = "oplus,uim2-switch";
+    esim-control-gpios = <&pm8550vs_g_gpios 6 GPIO_ACTIVE_LOW>;
+    pinctrl-names = "default";
+    pinctrl-0 = <&esim_en_gpio>;
+  };
   //#endif /*OPLUS_FEATURE_ESIM*/
 };
 
